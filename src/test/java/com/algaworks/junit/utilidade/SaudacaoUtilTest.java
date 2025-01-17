@@ -11,7 +11,13 @@ class SaudacaoUtilTest {
     public void saudarTeste(){
         String saudacao = SaudacaoUtil.saudar(9);
         System.out.println(saudacao);
-        assertEquals("Bom dia", saudacao);
+        assertEquals("Bom dia", saudacao, "Saudação incorreta!");
+    }
+
+    @Test
+    public void deveLancarExcecao(){
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> SaudacaoUtil.saudar(-9));
+        assertEquals("Hora inválida", illegalArgumentException.getMessage());
     }
 
 }
